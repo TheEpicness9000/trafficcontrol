@@ -68,22 +68,22 @@ public class SignTileEntity extends TileEntity {
 		{
 			switch(getType()) // Use new error textures because it's fun
 			{
-				case 0:
+				case 0: // Circle
 					variant = 114;
 					break;
-				case 1:
+				case 1: // Diamond
 					variant = 162;
 					break;
-				case 2:
+				case 2: // Misc
 					variant = 119;
 					break;
-				case 3:
+				case 3: // Rectangle
 					variant = 91;
 					break;
-				case 4:
+				case 4: // Square
 					variant = 168;
 					break;
-				case 5:
+				case 5: // Triangle
 					variant = 96;
 					break;
 			}
@@ -131,23 +131,23 @@ public class SignTileEntity extends TileEntity {
 			return getSignTypeName(type) + "0";
 		}
 		
-		if (variant == 0)
+		if (variant == 0) // Blank Misc. Sign (Square)
 		{
 			return "misc0b";
 		}
-		else if ((variant >= 1 && variant <= 4) || 
+		else if ((variant >= 1 && variant <= 4) || // Octagon
 				(variant >= 100 && variant <= 101) ||
 				variant == 113 ||
 				variant == 119)
 		{
 			return "misc1b";
 		}
-		else if ((variant >= 5 && variant <= 8) ||
+		else if ((variant >= 5 && variant <= 8) || // Inverted Triangle
 				(variant >= 117 && variant <= 118))
 		{
 			return "misc2b";
 		}
-		else if ((variant >= 9 && variant <= 32) || 
+		else if ((variant >= 9 && variant <= 32) || // Upper Half
 				(variant >= 76 && variant <= 99) ||
 				(variant >= 102 && variant <= 105) ||
 				(variant >= 108 && variant <= 109) ||
@@ -156,25 +156,25 @@ public class SignTileEntity extends TileEntity {
 		{
 			return "misc3b";
 		}
-		else if ((variant >= 33 && variant <= 40) || 
+		else if ((variant >= 33 && variant <= 40) || // Lower Half
 				(variant >= 106 && variant <= 107) ||
 				(variant >= 110 && variant <= 111))
 		{
 			return "misc4b";
 		}
-		else if (variant >= 41 && variant <= 45)
+		else if (variant >= 41 && variant <= 45) // Horizontal Non-Right Crossbuck
 		{
 			return "misc5b";
 		}
-		else if (variant >= 46 && variant <= 47)
+		else if (variant >= 46 && variant <= 47) // Right Crossbuck
 		{
 			return "misc6b";
 		}
-		else if (variant >= 48 && variant <= 50)
+		else if (variant >= 48 && variant <= 50) // Pennant
 		{
 			return "misc7b";
 		}
-		else
+		else // Thin Rectangle
 		{
 			return "misc8b";
 		}
@@ -323,12 +323,12 @@ public class SignTileEntity extends TileEntity {
 					note = obj.get("note").getAsString();
 				}
 				
-				if ((note == null || note.equals("")) && tooltip != null && !tooltip.equals(""))
+				if ((note == null || note.equals("")) && tooltip != null && !tooltip.equals("")) // If the sign has a tooltip but no note...
 				{
-					note = tooltip;
+					note = tooltip; // Display the tooltip in place of the note
 				}
 				
-				Sign newImage = new Sign(
+				Sign newImage = new Sign( // Fetch the texture and data on the sign
 						new ResourceLocation("trafficcontrol:textures/blocks/sign/" + type + "/" + type + variant + ".png"),
 						name,
 						typeID,
